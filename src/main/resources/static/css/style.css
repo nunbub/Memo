@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+header {
+	height:70px;
+	background-color:#dddddd;
+}
+
+.contents > .join-box {
+	width:300px;
+}
+
+footer {
+	height:70px;
+	background-color:#dddddd;
+}
