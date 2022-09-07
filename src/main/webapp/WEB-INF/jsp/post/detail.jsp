@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>      
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +12,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 <link rel="stylesheet" href="/static/css/style.css" type="text/css">
-<title>메모 - 리스트</title>
+<title>메모 - 메모보기</title>
 </head>
 <body>
 
@@ -23,33 +22,25 @@
 		
 		<section class="d-flex justify-content-center">
 			<div class="col-9 my-5">
-				<h2 class="text-center mt-2">메모 리스트</h2>
+				<h2 class="text-center">메모 보기</h2>
 				
-				<table class="table text-center mt-3">
-					<thead>
-						<tr>
-							<th>No.</th>
-							<th>제목</th>
-							<th>시간</th>
-						</tr>
-					</thead>				
+				<div class="d-flex mt-3">
+					<label class="col-2">제목 : </label> 
 					
-					<tbody>
-						<c:forEach var="post" items="${postList}" >
-							<tr>
-								<td>${post.id }</td>
-								<td><a class="text-dark" href="/post/detail/view?id=${post.id}">${post.subject }</a></td>
-								<td><fmt:formatDate value="${post.createdAt }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				
-				</table>
-				
-				<div class="text-right">
-					<a href="/post/create/view" class="btn btn-primary">글쓰기</a>
+					<input type="text" class="form-control col-10" id="titleInput" value="${post.subject}">
 				</div>
 				
+				<textarea class="form-control mt-2" rows="7" id="contentInput">${post.content}</textarea>
+				
+				<div class="d-flex justify-content-between mt-3">
+					<div>
+						<a class="btn btn-primary" href="/post/list/view">목록으로</a>
+						<button type="button" class="btn btn-danger">삭제</button>
+					</div>
+					
+					<button type="button" class="btn btn-primary" id="saveBtn">수정</button>
+					
+				</div>
 			</div>
 			
 		
