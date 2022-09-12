@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.nunbub.memo.post.bo.PostBO;
 
@@ -26,12 +27,13 @@ public class PostRestController {
 	public Map<String, String> create(
 			@RequestParam("title") String title
 			, @RequestParam("content") String content
+			, @RequestParam(value="file", required=false) MultipartFile file
 			, HttpServletRequest request) {
 		
 		HttpSession session = request.getSession();
 		int userId = (Integer)session.getAttribute("userId");   // getAttribute는 다운캐스팅 과정이기때문에 어떤 타입으로 가져올건지 정확히 적어줘야함
 		
-		int count = postBO.addPost(userId, title, content);
+		int count = postBO.addPost(userId, title, content, file);
 		
 		Map<String, String> result = new HashMap<>();
 		

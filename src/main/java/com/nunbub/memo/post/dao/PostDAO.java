@@ -13,7 +13,8 @@ public interface PostDAO {
 	public int insertPost(
 			@Param("userId") int userId
 			, @Param("title") String title
-			, @Param("content") String content);
+			, @Param("content") String content
+			, @Param("imagePath") String imagePath);
 	
 	public List<Post> selectPostList(@Param("userId") int userId);
 	
