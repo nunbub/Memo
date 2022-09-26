@@ -20,4 +20,10 @@ public interface PostDAO {
 	
 	public Post selectPost(@Param("id") int id);
 	
+	public int updatePost(
+			@Param("postId") int postId
+			, @Param("title") String title
+			, @Param("content") String content);
+	
+	public int deletePost(@Param("postId") int postId);
 }

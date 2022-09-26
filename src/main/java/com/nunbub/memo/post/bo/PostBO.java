@@ -48,4 +48,23 @@ public class PostBO {
 		return postDAO.selectPost(id);
 	}
 	
+	// 게시물 수정 기능
+	public int updatePost(int postId, String title, String content) {
+		return postDAO.updatePost(postId, title, content);
+	}
+	
+	// 게시물 삭제 기능
+	public int deletePost(int postId) {
+		
+		// 이미지 파일 삭제
+		// 이미지 경로가 저장된 post 정보 조회
+		Post post = postDAO.selectPost(postId);
+		
+		FileManagerService.removeFile(post.getImagePath());
+		
+		
+		return postDAO.deletePost(postId);
+	}
+	
+	
 }
