@@ -31,7 +31,7 @@ public class WebMVCConfig implements WebMvcConfigurer {
 		// 인터셉터를 거쳐서 처리할 페이지 규칙
 		.addPathPatterns("/**")
 		// 제외할 페이지 규칙
-		.excludePathPatterns("/static/**", "/images/**");
+		.excludePathPatterns("/static/**", "/images/**", "/user/signout");
 		
 	}
 	
